@@ -9,27 +9,27 @@ class TestRF1(TestCase):
             o = EnterpriseManager()
             result = o.register_project('B12345674', 'PRO01', 'valid proj', 'HR', '1/2/2026', 100000.00)
             print("TC1:", result)
-            #self.assertEqual(result, "afe50dce8b6223955bf3edc1eaa73d7c")
+            self.assertEqual(result, "8525e7f37087e2314aa199006acbe42f")
 
         def test_TC2(self):
             o = EnterpriseManager()
             result = o.register_project('B12345674', 'PRO012', 'Valid project name is longerr', 'FINANCE', '31/12/2025',
                                         999999.99)
             print("TC2:", result)
-            self.assertEqual(result, "afe50dce8b6223955bf3edc1eaa73d7c")
+            self.assertEqual(result, "1218ee1a097bd5a59f9c711f69f05ed0")
 
         def test_TC3(self):
             o = EnterpriseManager()
             result = o.register_project('B12345674', 'PRO012345', 'Valid project name is longerrr', 'LEGAL',
                                         '30/11/2025', 50000.00)
             print("TC3:", result)
-            # self.assertEqual(result, "")
+            self.assertEqual(result, "7c72937f3b9b14db609d97a4f66cbc06")
 
         def test_TC4(self):
             o = EnterpriseManager()
             result = o.register_project('B12345682', 'PRO0123456', 'valid proje', 'LOGISTICS', '2/1/2025', 50000.01)
             print("TC4:", result)
-            # self.assertEqual(result, "")
+            self.assertEqual(result, "58adfc1534324d14e77354dcfb44f9d3")
         def test_TC5(self):
             o = EnterpriseManager()
             with self.assertRaisesRegex(EnterpriseManagementException, "Wrong CIF value"):

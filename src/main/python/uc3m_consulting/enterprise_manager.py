@@ -7,7 +7,7 @@ from pathlib import Path
 from uc3m_consulting.enterprise_management_exception import (
     EnterpriseManagementException,
 )
-from uc3m_consulting.enterprise_project import EnterpriseProject
+from uc3m_consulting.enterprise_project import EnterpriseProject, ProjectData
 
 
 class EnterpriseManager:
@@ -185,9 +185,15 @@ class EnterpriseManager:
         EnterpriseManager._validate_date(date)
         EnterpriseManager._validate_budget(budget)
 
-        obj = EnterpriseProject(
-            company_cif, project_acronym, project_description, department, date, budget
+        project_data = ProjectData(
+            company_cif=company_cif,
+            project_acronym=project_acronym,
+            project_description=project_description,
+            department=department,
+            starting_date=date,
+            project_budget=budget,
         )
+        obj = EnterpriseProject(project_data)
         project_id = obj.project_id
         EnterpriseManager._store_operation(project_id)
         return project_id

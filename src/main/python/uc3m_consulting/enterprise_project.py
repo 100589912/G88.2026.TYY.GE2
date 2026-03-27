@@ -2,22 +2,31 @@
 import hashlib
 import json
 from datetime import datetime, timezone
+from dataclasses import dataclass
+from freezegun import freeze_time
+
+@dataclass(frozen=True)
+class ProjectData:
+    """
+    Dataclass to hold the project data for easier handling and readability + pylint
+    """
+    company_cif: str
+    project_acronym: str
+    project_description: str
+    department: str
+    starting_date: str
+    project_budget: float
 
 class EnterpriseProject:
     """Class representing a transfer request"""
-    def __init__(self,
-                 company_cif: str,
-                 project_acronym: str,
-                 project_description: str,
-                 department: str,
-                 starting_date: str,
-                 project_budget: float):
-        self.__company_cif = company_cif
-        self.__project_description = project_description
-        self.__project_achronym = project_acronym
-        self.__department = department
-        self.__starting_date = starting_date
-        self.__project_budget = project_budget
+    @freeze_time("01-01-2026")
+    def __init__(self, data:ProjectData):
+        self.__company_cif = data.company_cif
+        self.__project_description = data.project_description
+        self.__project_achronym = data.project_acronym
+        self.__department = data.department
+        self.__starting_date = data.starting_date
+        self.__project_budget = data.project_budget
         justnow = datetime.now(timezone.utc)
         self.__time_stamp = datetime.timestamp(justnow)
 

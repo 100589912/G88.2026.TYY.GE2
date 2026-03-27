@@ -4,3 +4,5 @@ venv*
 .pybuilder
 target
 __pycache__/
+corporate_operations.json
+.pylint.d/

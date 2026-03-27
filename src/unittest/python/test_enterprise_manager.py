@@ -9,14 +9,14 @@ class TestRF1(TestCase):
             o = EnterpriseManager()
             result = o.register_project('B12345674', 'PRO01', 'valid proj', 'HR', '1/2/2026', 100000.00)
             print("TC1:", result)
-            #self.assertEqual(result, "02c7ef9cceb0cb84004a45a5aa029c71")
+            #self.assertEqual(result, "afe50dce8b6223955bf3edc1eaa73d7c")
 
         def test_TC2(self):
             o = EnterpriseManager()
             result = o.register_project('B12345674', 'PRO012', 'Valid project name is longerr', 'FINANCE', '31/12/2025',
                                         999999.99)
             print("TC2:", result)
-            # self.assertEqual(result, "")
+            self.assertEqual(result, "afe50dce8b6223955bf3edc1eaa73d7c")
 
         def test_TC3(self):
             o = EnterpriseManager()
